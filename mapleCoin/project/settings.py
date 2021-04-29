@@ -42,7 +42,7 @@ SECRET_KEY = 'django-insecure-kdst0v5r60etnsofj-^^#a)rxuefsj6*ud2a)^2tc&7h54l+!w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["www.maple-coin.com", "maple-coin.com", "127.0.0.1:8000/"]
+ALLOWED_HOSTS = ["www.maple-coin.com", "maple-coin.com", "127.0.0.1"]
 
 
 # Application definition
