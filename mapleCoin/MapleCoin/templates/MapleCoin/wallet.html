@@ -1,0 +1,254 @@
+<!-- Extending the layout page-->
+{% extends "MapleCoin/layout.html" %}
+
+<!-- The block part is where the new content will go-->
+{% block page %}
+    
+    <!-- Title -->
+    <h2 class="display-4 text-black title">
+        Wallet
+    </h2> 
+
+    <hr class="line">
+
+    <!-- Wallet Info -->
+    <div class="section">
+        
+        <p class= "info">
+
+            This is your Maple Coin wallet. It can be used to make transactions and is one of your gateways to participate in the Maple Coin Network.
+    
+            {% if message %}
+                <div class="highlight section">
+                    {{ message }}
+                </div>
+            {% endif %}
+    
+        </p>
+
+    </div>
+    
+    <!-- Crucial details -->
+    <div class="section">
+
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle">
+            Wallet Details
+        </h4>
+
+        <hr class="line">
+
+        <!-- Public Key -->
+        <h5 class="walletTitle">
+            Public Key:
+        </h5> 
+        <p class="info">
+            {{ publicKey }}, {{ exponent }} 
+        </p>
+  
+
+        <!-- Address -->
+        <h5 class="walletTitle">
+            Address:
+        </h5> 
+        <p class="info">
+            {{ address }} 
+        </p>
+
+        <br>
+        
+        <!-- Download-->
+        <form>
+            <!-- Download button -->
+            <button type="submit" formaction="{% url 'MapleCoin:nodeInfo' address %}" type="button" class="btn defaultButton">
+                Download a Copy 
+            </button>
+        </form>
+
+    </div>
+    <!-- End crucial Details -->
+
+    <!-- Transaction History-->
+    <div class="section">
+        
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle">
+            Transaction History
+        </h4>
+        
+        <hr class="line">
+
+        <!-- Fixed scrollable Table -->
+        <div class="table-wrapper-scroll-y my-custom-scrollbar" id="transactionSmall">
+
+            <!-- Table -->
+            <table class="table table-bordered table-striped mb-0" style="table-layout:fixed;">
+                
+                <!-- Table Head -->
+                <thead>
+
+                    <th scope="col">
+                        Index
+                    </th>
+
+                    <th scope="col">
+                        Sender
+                    </th>
+
+                    <th scope="col">
+                        Reciever
+                    </th>
+
+                    <th scope="col">
+                        Amount
+                    </th>
+                    
+                    <th scope="col">
+                        Block
+                    </th>
+
+                </thead>
+                <!-- End Table Head-->
+
+                <!-- Table Content -->
+                <!-- For each transaction in transactions -->
+                {% for transaction in transactions %}
+
+                    <!-- Start Row -->
+                    <tr>
+                        <!-- Form to make the Transactions visitable-->
+                        <form>
+
+                            <!-- Index -->
+                            <td>
+                                <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                    <input type="text" class="rowEntry" value= "{{ transaction.id }}" readonly>
+                                </a>
+                            </td>
+
+                            <!-- Sender -->
+                            <td>
+                                <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                    <input type="text" class="rowEntry" value= "{{ transaction.sender }}" readonly>
+                                </a>
+                            </td>
+
+                            <!-- Reciever -->
+                            <td>
+                                <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                    <input type="text" class="rowEntry" value= "{{ transaction.reciever }}" readonly>
+                                </a>
+                            </td>
+
+                            <!-- Amount -->
+                            <td>
+                                <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                    <input type="text" class="rowEntry" value= "{{ transaction.amount }}" readonly>
+                                </a>
+                            </td>
+
+                            <!-- Block -->
+                            <td>
+                                <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                    <input type="text" class="rowEntry" value= "{{ transaction.block }}" readonly>
+                                </a>
+                            </td>
+
+                        </form>
+                        <!-- End Form -->
+
+                    </tr>
+                    <!-- End Row -->
+
+                {% endfor %}    
+                <!-- End Table Content -->
+
+            </table>
+            <!-- End Table -->
+
+        </div> 
+
+        <br>
+
+        <!-- Current Balance -->
+        <p class= "info">
+            Current Balance : {{ currentBalance }} Maple Coins
+        </p>    
+
+        <br>
+        <form>
+            <!-- Download a Copy -->
+            <button type="submit" formaction="{% url 'MapleCoin:downloadNodeTransactions' address %}" type="button" class="btn defaultButton">
+                Download a Copy 
+            </button>
+        </form>
+
+    </div>
+    <!-- End Transaction History -->
+
+    <!-- Make Transaction -->
+    <div class="section">
+
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle">
+            Make a transaction
+        </h4>
+    
+        <hr class="line">
+        
+        <!-- Form to submit details -->
+        <form action= "{% url 'MapleCoin:addTransaction' %}" method="POST">
+            {% csrf_token %}
+            <!-- Sender -->
+            <p class="display-4 text-black info">
+                <h5 class="walletTitle">
+                    Sender:
+                </h5>
+                <input class= "transactionInfo" type="text" name="sender" value= "{{ address }}" readonly>
+            </p>
+    
+            <!-- Reciever -->
+            <p class="display-4 text-black info">
+                <h5 class="walletTitle">
+                    Reciever:
+                </h5>
+                <input class= "transactionInfo" type="text" name="reciever" placeholder="Maple Coin Address">
+            </p>
+    
+            <!-- Amount -->
+            <p class="display-4 text-black info">
+                <h5 class="walletTitle">
+                    Amount:
+                </h5>
+                <input class= "transactionInfo" type="text" name="amount" placeholder="amount">
+            </p>
+            
+            <!-- Public key -->
+            <p class="display-4 text-black info">
+                <h5 class="walletTitle">
+                    Public Key:
+                </h5>
+                <input class= "transactionInfo" type="text" name="publicKey" value= "{{ publicKey }}" readonly>
+            </p>
+    
+            <!-- Exponent -->
+            <p class="display-4 text-black info">
+                <h5 class="walletTitle">
+                    Exponent:
+                </h5>
+                <input class= "transactionInfo" type="text" name="exponent" value= "{{ exponent}}" readonly>
+            </p>
+    
+            <br>
+            <!-- Sign Transaction -->
+            <input type="submit" value="Sign Transaction" class="btn defaultButton">
+    
+        </form>
+        <!-- End form to submit details-->
+
+    </div>
+    <!-- End make transactions -->
+
+    <!-- End wallet info -->
+
+{% endblock %}

@@ -1,0 +1,69 @@
+<!-- Extending the layout page-->
+{% extends "MapleCoin/layout.html" %}
+
+<!-- The block part is where the new content will go, Over the past few weeks I have been really digging loveless, not sure if have heard it-->
+{% block page %}
+
+    <!-- Error Message -->
+    {% if message %}
+
+        <div>
+            {{ message }}
+        </div>
+
+    {% endif %}
+    
+    <!-- Title -->
+    <h2 class="display-4 text-black title">
+        Log In
+    </h2>
+
+    <hr class= "line">
+    
+    <!-- Login -->
+    <div class="section">
+
+        <!-- Form to login -->
+        <form action= "{% url 'MapleCoin:login' %}" method= "POST">
+            {% csrf_token %}
+
+            <!--- User Name -->
+            <p class="display-4 text-black userInput">
+                Username:
+                <input type="text" name="username" placeholder="Maple">
+            </p>
+
+            <!-- Password -->
+            <p class="display-4 text-black userInput">
+                Password:
+                <input type="password" name="password" placeholder="password">
+            </p>
+
+            <br>
+            
+            <!-- Submit -->
+            <input type="submit" value="  Log In  " class="btn  defaultButton">
+
+        </form>
+        <!-- End Form -->
+
+    </div>
+    <!-- End Login-->
+    
+    <!-- Ask for register -->
+    <div class="section">
+
+        <form>
+            <span> 
+                Don't Have an account? Make one here!
+                <!-- Register Button -->
+                <button type="submit" formaction="{% url 'MapleCoin:register' %}" class="btn defaultButton" style="margin-left: 1%;"> 
+                    Register 
+                </button>
+            </span> 
+        </form>
+
+    </div>
+    <!-- End register-->
+
+{% endblock %}

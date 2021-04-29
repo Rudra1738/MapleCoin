@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Page Info-->
+        <meta charset="utf-8">
+        
+        <!-- View Port -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Style Sheets -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'MapleCoin/styles.css' %}">
+
+        <!-- Scripts -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <!-- Title -->
+        <title>
+            Maple Coin
+        </title>
+
+    </head>
+
+    <body>
+
+        <!-- For sidebar toggle -->
+        <script>
+            $(function() {
+            // Sidebar toggle behavior
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar, #content').toggleClass('active');
+                });
+            });
+        </script>
+
+        <!-- Vertical Nav Bar-->
+        <div class="vertical-nav bg-white" id="sidebar">
+            
+            <!-- Small Title at the top-->
+            <div class="py-4 px-3 mb-4 bg-light">
+                <div class="media d-flex align-items-center">
+                    <div class="media-body"> 
+
+                        <a href="{% url 'MapleCoin:index' %}">
+                            <h4 class="m-0">
+                                Maple Coin
+                            </h4>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start of Tabs-->
+            <ul class="nav flex-column bg-white mb-0">
+
+                <!-- Index -->
+                <li class="nav-item">
+                    <a href="{% url 'MapleCoin:index' %}" class="nav-link text-gray">
+                        Home 
+                    </a>
+                </li>
+
+                <!-- Wallet -->
+                <li class="nav-item">
+                    <a href="{% url 'MapleCoin:wallet' ' ' %}" class="nav-link text-gray">
+                        Wallet
+                    </a>
+                </li>
+
+                <!-- Block Chain -->
+                <li class="nav-item">
+                    <a href="{% url 'MapleCoin:BlockChain' %}" class="nav-link text-gray">
+                        Block Chain
+                    </a>
+                </li>
+
+                <!-- Transactions -->
+                <li class="nav-item">
+                    <a href="{% url 'MapleCoin:transactions' %}" class="nav-link text-gray">
+                        Transactions
+                    </a>
+                </li>
+
+                <!-- Mining -->
+                <li class="nav-item">
+                    <a href="{% url 'MapleCoin:mining' %}" class="nav-link text-gray">
+                        Mining
+                    </a>
+                </li>
+
+                <!-- Line Break -->
+                <li class="nav-item">
+                    <br>
+                </li>
+                
+                <!-- Developers Part -->
+                <li class="nav-item">
+                    <a class="nav-link" style="color: black;">
+                        For Developers:
+                    </a>
+                </li>
+                
+                <!-- Source Code-->
+                <li class="nav-item">
+                    <a href="{% url 'MapleCoin:sourceCode' %}" class="nav-link text-gray">
+                        Source Code
+                    </a>
+                </li>
+
+                <!-- Mobile stuff -->
+                <li class="nav-item mobile">
+                    <br>
+                </li>
+                
+                <!-- Account part-->
+                <li class="nav-item mobile">
+                    <a class="nav-link text-gray" style="color: black;">
+                        Account:
+                    </a>
+                </li>
+
+                <!-- User is logged in already-->
+                {% if user.is_authenticated %}
+                    <!-- User -->
+                    <li class="nav-item mobile">
+                        <a class="nav-link text-gray">
+                            Welcome, {{user.username}}
+                        </a>
+                    </li>
+                    <!-- Log out -->
+                    <li class="nav-item mobile">
+                        <a href="{% url 'MapleCoin:logout' %}" class="nav-link text-gray">
+                            Log Out 
+                        </a>
+                    </li>
+
+                <!-- User is not logged in-->
+                {% else %}
+
+                    <!-- Login Button -->
+                    <li class="nav-item mobile">
+                        <a href="{% url 'MapleCoin:login' %}" class="nav-link text-gray">
+                            Log In 
+                        </a>
+                    </li>
+
+                    <!-- Register Button -->
+                    <li class="nav-item mobile">
+                        <a href="{% url 'MapleCoin:register' %}" class="nav-link text-gray">
+                            Register 
+                        </a>
+                    </li>
+                {% endif %}
+                <!-- End mobile stuff-->
+            </ul>
+            <!-- End of Tabs-->
+        </div>
+        <!-- End Vertical Navbar -->
+
+        <!-- Page Content Holder-->
+        <div class="page-content p-5" id="content">
+
+            <form>
+
+                <!-- Toggle Sidebar Navbar -->
+                <button id="sidebarCollapse" type="button" class="btn rounded-pill shadow-sm px-4 mb-4">
+                    <small class="text-uppercase font-weight-bold">
+                        Toggle Menu
+                    </small>
+                </button>
+                
+                <!-- User is logged in already-->
+                {% if user.is_authenticated %}
+
+                    <!-- User -->
+                    <span class="btn defaultButton topRight normal" style="margin-right: 6%;"> 
+                        Welcome, {{user.username}}
+                    </span>
+                    
+                    <!-- Log out -->
+                    <button type="submit" formaction="{% url 'MapleCoin:logout' %}" class="btn defaultButton topRight normal"> 
+                        Log Out 
+                    </button>
+
+                <!-- User is not logged in-->
+                {% else %}
+
+                    <!-- Login Button -->
+                    <button type="submit" formaction="{% url 'MapleCoin:login' %}" class="btn defaultButton topRight normal" style="margin-right: 6%;"> 
+                        Log In 
+                    </button>
+
+                    <!-- Register Button -->
+                    <button type="submit" formaction="{% url 'MapleCoin:register' %}" class="btn defaultButton topRight normal"> 
+                        Register 
+                    </button>
+
+                {% endif %}
+
+            </form>
+
+            <!-- Content of the page to be inserted here-->
+            {% block page %}
+            {% endblock %} 
+            <!-- End Content of page -->
+
+        </div>
+        <!--End page Content Holder-->
+
+    </body>
+
+</html>

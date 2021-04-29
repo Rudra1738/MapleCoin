@@ -1,0 +1,113 @@
+<!-- Extending the layout page-->
+{% extends "MapleCoin/layout.html" %}
+
+<!-- The block part is where the new content will go-->
+{% block page %}
+
+    <h2 class="display-4 text-black title">
+        Transactions
+    </h2>
+
+    <hr class="line">
+
+    <!-- Fixed scrollable Table -->
+    <div class="table-wrapper-scroll-y my-custom-scrollbar section" id="transaction">
+
+        <!-- Table -->
+        <table class="table table-bordered table-striped mb-0" style="table-layout:fixed;">
+            
+            <!-- Table Head -->
+            <thead>
+
+                <th scope="col">Index</th>
+
+                <th scope="col">Sender</th>
+
+                <th scope="col">Reciever</th>
+
+                <th scope="col">Amount</th>
+                
+                <th scope="col">Block</th>
+
+            </thead>
+            <!-- End Table Head-->
+
+            <!-- Table Content -->
+            <!-- For each transaction in transactions -->
+            {% for transaction in transactions %}
+
+                <!-- Start Row -->
+                <tr>
+                    <!-- Form to make the Transactions visitable-->
+                    <form>
+
+                        <!-- Index -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                <input type="text" class="rowEntry" value= "{{ transaction.id }}" readonly>
+                            </a>
+                        </td>
+
+                        <!-- Sender -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                <input type="text" class="rowEntry" value= "{{ transaction.sender }}" readonly>
+                            </a>
+                        </td>
+
+                        <!-- Reciever -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                <input type="text" class="rowEntry" value= "{{ transaction.reciever }}" readonly>
+                            </a>
+                        </td>
+
+                        <!-- Amount -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                <input type="text" class="rowEntry" value= "{{ transaction.amount }}" readonly>
+                            </a>
+                        </td>
+
+                        <!-- Block -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                <input type="text" class="rowEntry" value= "{{ transaction.block }}" readonly>
+                            </a>
+                        </td>
+
+                    </form>
+                    <!-- End Form -->
+
+                </tr>
+                <!-- End Row -->
+
+            {% endfor %}    
+            <!-- End Table Content -->
+
+        </table>
+        <!-- End Table -->
+
+    </div> 
+
+    <!-- Downloads -->  
+    <div class="section">
+        
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle"> 
+            Downloads 
+        </h4>
+
+        <hr class="line">
+
+        <!-- Download Transactions Copy -->
+        <form>
+            <button type="submit" formaction="{% url 'MapleCoin:downloadTransactions' %}" class="btn defaultButton"> 
+                Transactions Copy 
+            </button>
+        </form>
+
+    </div>
+    <!-- End Downloads-->
+
+{% endblock %}

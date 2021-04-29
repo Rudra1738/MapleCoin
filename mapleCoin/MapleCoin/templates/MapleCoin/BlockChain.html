@@ -1,0 +1,131 @@
+<!-- Extending the layout page-->
+{% extends "MapleCoin/layout.html" %}
+
+<!-- The block part is where the new content will go-->
+{% block page %}
+
+    <h2 class="display-4 text-black title">Block Chain</h2>
+
+    <hr class="line">
+
+    <!-- Fixed scrollable Table -->
+    <div class="table-wrapper-scroll-y my-custom-scrollbar section" id="blockChain">
+
+        <!-- Table -->
+        <table class="table table-bordered table-striped mb-0" style="table-layout:fixed;">
+            
+            <!-- Table Head -->
+            <thead>
+
+                <th scope="col">
+                    Block Height
+                </th>
+
+                <th scope="col">
+                    Previous Block Hash
+                </th>
+                
+                <th scope="col">
+                    Merkel Root
+                </th>
+
+                <th scope="col">
+                    Nonce
+                </th>
+
+                <th scope="col">
+                    Block Hash
+                </th>
+
+                <th scope="col">
+                    Miner
+                </th>
+
+            </thead>
+            <!-- End Table Head-->
+
+            <!-- Table Content -->
+            <!-- For each block in blocks -->
+            {% for block in blocks %}
+
+                <!-- Start Row -->
+                <tr>
+                    <!-- Form to make the blocks visitable-->
+                    <form>
+
+                        <!-- Index -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewBlock' block.id %}">
+                                <input type="text" class="rowEntry" value= "{{ block.id }}" readonly>
+                            </a>
+                        </td>
+
+                        <!-- Previous Block Hash -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewBlock' block.id %}">
+                                <input type="text" class="rowEntry" value= "{{ block.previousBlockHash }}" readonly>
+                            </a>
+                        </td>
+
+                        <!-- Merkel Root -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewBlock' block.id %}">
+                                <input type="text" class="rowEntry" value= "{{ block.merkelRoot }}" readonly>
+                            </a>
+                        </td>
+
+                        <!-- Nonce-->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewBlock' block.id %}">
+                                <input type="text" class="rowEntry" value= "{{ block.nonce }}" readonly>
+                            </a>
+                        </td>
+
+                        <!-- Hash -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewBlock' block.id %}">
+                                <input type="text" class="rowEntry" value= "{{ block.blockHash }}" readonly>
+                            </a>
+                        </td>
+
+                        <!-- Miner -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewBlock' block.id %}">
+                                <input type="text" class="rowEntry" value= "{{ block.miner }}" readonly>
+                            </a>
+                        </td>
+
+                    </form>
+                    <!-- End Form -->
+
+                </tr>
+                <!-- End Row -->
+
+            {% endfor %}    
+            <!-- End Table Content -->
+
+        </table>
+        <!-- End Table -->
+        
+    </div> 
+
+    <!-- Downloads -->
+    <div class="section">
+        
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle"> 
+            Downloads 
+        </h4>
+
+        <hr class="line">
+
+        <!-- Download Block Chain Copy -->
+        <form>
+            <button type="submit" formaction="{% url 'MapleCoin:downloadBlockChain' %}" class="btn  defaultButton" download> 
+                Block Chain Copy 
+            </button>
+        </form>
+    </div>
+    <!-- End Downloads-->
+
+{% endblock %}

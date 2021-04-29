@@ -1,0 +1,170 @@
+<!-- Extending the layout page-->
+{% extends "MapleCoin/layout.html" %}
+
+<!-- The block part is where the new content will go-->
+{% block page %}
+    
+    <!-- Title -->
+    <h2 class="display-4 text-black title">
+        Crypto Node
+    </h2>  
+
+    <hr class="line">
+
+    <!--Crypto Node info-->
+    <div class="section">
+
+        <!-- Username  -->
+        <h5>
+            Username :
+        </h5>
+        <p class="display-4 text-black info">
+            {{ node.username }}
+        </p>
+
+        <!-- Crypto node address -->
+        <h5>
+            Address:
+        </h5> 
+        <p class="display-4 text-black info">
+            {{ node.address }}
+        </p>
+
+        <!-- Current Balance of node -->
+        <h5>
+            Current Balance :
+        </h5> 
+        <p class="display-4 text-black info">
+            {{ node.currentBalance }}
+        </p>
+
+        <!-- Node Public Key -->
+        <h5>
+            Public Key :
+        </h5> 
+        <p class="display-4 text-black info">
+            {{ node.publicKey }}
+        </p>
+
+        <!-- Node Exponent -->
+        <h5>
+            Exponent :
+        </h5> 
+        <p class="display-4 text-black info">
+            {{ node.exponent }}
+        </p>
+
+    </div>
+    <!-- End crypto node info-->
+
+    <!-- Node Transactions-->
+    <h4 class="display-4 text-black subtitle">
+        Node Transactions
+    </h4>
+    
+    <hr class="line">
+
+    <!-- Fixed scrollable Table -->
+    <div class="table-wrapper-scroll-y my-custom-scrollbar section" id="transactionSmall">
+
+        <!-- Table -->
+        <table class="table table-bordered table-striped mb-0" style="table-layout:fixed;">
+            
+            <!-- Table Head -->
+            <thead>
+
+                <th scope="col">Index</th>
+
+                <th scope="col">Sender</th>
+
+                <th scope="col">Reciever</th>
+
+                <th scope="col">Amount</th>
+                
+                <th scope="col">Block</th>
+
+            </thead>
+            <!-- End Table Head-->
+
+            <!-- Table Content -->
+            <!-- For each transaction in transactions -->
+            {% for transaction in transactions %}
+
+                <!-- Start Row -->
+                <tr>
+                    <!-- Form to make the Transactions visitable-->
+                    <form>
+
+                        <!-- Index -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                <input type="text" class="rowEntry" value= "{{ transaction.id }}" readonly>
+                            </a>
+                        </td>
+
+                        <!-- Sender -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                <input type="text" class="rowEntry" value= "{{ transaction.sender }}" readonly>
+                            </a>
+                        </td>
+
+                        <!-- Reciever -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                <input type="text" class="rowEntry" value= "{{ transaction.reciever }}" readonly>
+                            </a>
+                        </td>
+
+                        <!-- Amount -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                <input type="text" class="rowEntry" value= "{{ transaction.amount }}" readonly>
+                            </a>
+                        </td>
+
+                        <!-- Block -->
+                        <td>
+                            <a href="{% url 'MapleCoin:viewTransaction' transaction.id 'trans' %}">
+                                <input type="text" class="rowEntry" value= "{{ transaction.block }}" readonly>
+                            </a>
+                        </td>
+
+                    </form>
+                    <!-- End Form -->
+
+                </tr>
+                <!-- End Row -->
+
+            {% endfor %}    
+            <!-- End Table Content -->
+
+        </table>
+        <!-- End Table -->
+
+    </div> 
+    <!-- End node transactions -->
+
+    <!-- Cypto Node Download -->
+    <div class="section">
+
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle"> 
+            Downloads
+        </h4>
+    
+        <hr class="line">
+        
+        <!-- Download info -->
+        <form class="section">
+            <p>
+                <button type="submit" formaction="{% url 'MapleCoin:nodeInfo' node.address %}" class="btn defaultButton"> 
+                    Crypto Node
+                </button>  
+            </p>
+        </form>
+
+    </div>
+    <!-- End Crypto Node Downloads -->
+
+{% endblock %}

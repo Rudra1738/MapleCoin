@@ -1,0 +1,79 @@
+<!-- Extending the layout page-->
+{% extends "MapleCoin/layout.html" %}
+
+<!-- The block part is where the new content will go, Over the past few weeks I have been really digging loveless, not sure if have heard it-->
+{% block page %}    
+
+    <!-- Title -->
+    <h2 class="display-4 text-black title">
+        Register
+    </h2>
+
+    <hr class="line">
+
+    <!-- Error message -->
+    {% if message %}
+
+        <div class="highlight">
+            {{ message }}
+        </div>
+
+    {% endif %}
+    
+    
+    <!-- Registration -->
+    <div class="section">
+
+        <form action= "{% url 'MapleCoin:register' %}" method="POST" class="section">
+            {% csrf_token %}
+            
+            <!-- Username -->
+            <p class="display-4 text-black userInput">
+                Username:
+                <input type="text" name="username" placeholder="Maple">
+            </p>
+    
+            <!-- Password -->
+            <p class="display-4 text-black userInput">
+                Password:
+                <input type="password" name="password" placeholder="password">
+            </p>
+    
+            <!-- Retype Password -->
+            <p class="display-4 text-black userInput">
+                Retype-Password:
+                <input type="password" name="retypepass" placeholder="password">
+            </p>
+    
+            <!-- Email Address-->
+            <p class="display-4 text-black userInput">
+                Email Address:
+                <input type="email" name="email" placeholder="password">
+            </p>
+    
+            <br>
+            <!-- Register -->
+            <input type="submit" value=" Register " class="btn  defaultButton">
+    
+        </form>
+
+    </div>
+    <!-- End Registration -->
+
+    <!-- Login for existing users -->
+    <div class="section">
+
+        <form class="info">
+            <span> 
+                Already have an account? Login here! 
+                <!-- Login Button -->
+                <button type="submit" formaction="{% url 'MapleCoin:login' %}" class="btn defaultButton" style="margin-left: 1%;"> 
+                    Log In 
+                </button>
+            </span> 
+        </form>
+
+    </div>
+    <!-- End login -->
+
+{% endblock %}

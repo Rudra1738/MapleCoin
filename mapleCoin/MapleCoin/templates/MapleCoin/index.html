@@ -1,0 +1,205 @@
+<!-- Extending the layout page-->
+{% extends "MapleCoin/layout.html" %}
+
+<!-- The block part is where the new content will go-->
+{% block page %}
+    <!-- The Title with the relevant buttons -->
+
+    <h2 class="display-4 text-black title">
+        Maple Coin
+    </h2>
+
+    <hr class="line">
+
+    <!-- Page Content -->
+
+    <!-- Intro -->
+    <div class="section">
+
+        <!-- Description-->
+        <p>
+            Maple Coin is an innovative perspective on currency. It is a fully digital currency developed entirely from scratch by a high school student. 
+            It is a cryptocurrency that relies on blockchain technology based on decentralized consensus, 
+            making it safer than every physical currency currently in existence. 
+            This revolutionary technology is the future of currencies; 
+            Be a fundamental part of this future by participating in the Maple Coin Network today.
+        </p>
+
+    </div>
+    <!-- End Intro -->
+
+    <!-- What is a crypto -->
+    <div class="section">
+
+        <!--Subtitle-->
+        <h4 class="display-4 text-black subtitle"> 
+            What is a cryptocurrency? Why use it?
+        </h4>
+    
+        <hr class="line">
+
+        <!-- Description-->
+        <p>
+            Cryptocurrency is a digital currency that is not controlled by any single entity such as a government or a bank. 
+            It roams free of every border and is built upon and maintained by clever mathematical ideas and algorithms, 
+            making it practically impossible and theoretically implausible to break. 
+            It is free of the risk of any corruption,
+            which is a possibility in currencies governed by a single body like a government and is instead controlled by the people using it, 
+            making it the most secure form of currency.
+        </p>
+
+        <p>
+            A cryptocurrency gives its users the peace of mind of their money being safe as there is no being behind it; 
+            it's all just mathematics! It also provides an easy outlet for people to invest in and contribute to the growth of this revolutionary technology. 
+            Cryptocurrencies are the people's currencies,  
+            and hence they have a bright future ahead of them where they might soon be replacing physical currencies forever and for good.
+        </p>
+
+        <p>
+            Maple Coin is a breath of fresh air in the world of cryptocurrencies. 
+            It is committed to using its robust infrastructure to facilitate and promote the safe and secure exchange of money between individuals and entities. 
+            It is a contribution to the growth of cryptocurrencies and will get just better with time.
+        </p>
+
+    </div>
+    <!-- End what is a crypto -->
+
+    <!-- Inspiration -->
+    <div class="section">
+
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle"> 
+            Inspiration
+        </h4>
+    
+        <hr class="line">
+        
+        <!-- Description -->
+        <p>
+            This project is heavily inspired by <a href="https://blockchain.berkeley.edu" target="_blank" class="highlight">Blockchain at Berkeley</a> and the YouTube channel <a href="https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw" target="_blank" class="highlight">3Blue1Brown</a>. 
+
+        </p>
+
+        <p>
+            The following lecture materials and video are the sole sources of the foundation of this project:
+
+                <ul>
+
+                    <li> 
+                        <a href="https://blockchain.berkeley.edu/courses/spring-2020-fundamentals-decal/" target="_blank" class="highlight"> 
+                            Bitcoin Mechanics and Optimizations: A Technical Overview - Blockchain at Berkeley
+                        </a> 
+                    </li>
+
+                    <li> 
+                        <a href="https://blockchain.berkeley.edu/courses/spring-2020-fundamentals-decal/" target="_blank" class="highlight"> 
+                            Bitcoin IRL: Wallets, Mining, and More - Blockchain at Berkeley
+                        </a> 
+                    </li>
+
+                    <li> 
+                        <a href="https://blockchain.berkeley.edu/courses/spring-2020-fundamentals-decal/" target="_blank" class="highlight"> 
+                            Trust without Trust: Distributed Systems & Consensus - Blockchain at Berkeley
+                        </a> 
+                    </li>
+
+                    <li> 
+                        <a href="https://youtu.be/bBC-nXj3Ng4" target="_blank" class="highlight">
+                            But how does bitcoin actually work? - 3Blue1Brown
+                        </a> 
+                    </li>
+
+                </ul>
+
+        </p>
+
+    </div>
+    <!-- End inspiration -->
+
+    <!-- Code -->
+    <div class="section">
+
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle"> 
+            Code
+        </h4>
+    
+        <hr class="line">
+
+        <!-- Description -->
+        <p>
+            Open Source Maple Coin Mining Software:
+            <a href="{% url 'MapleCoin:mining' %}" class="highlight">
+                Mining Software
+            </a>
+        </p>
+
+        <p class="section">
+            Open Source Maple Coin Network Code:
+            <a href="{% url 'MapleCoin:sourceCode' %}" class="highlight">
+                Source Code
+            </a>
+        </p>
+
+    </div>
+    <!-- End Code -->
+
+    <!-- Contact Us -->
+    <div class="section">
+        
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle"> 
+            Contact Us
+        </h4>
+    
+        <hr class="line">
+
+        <!-- Description-->
+        <p>
+            For any queries, please contact: 
+            <span class="highlight">
+                rudrarupani@maple-coin.com
+            </span> <br> 
+            We would be happy to help you at any time.
+        </p>
+
+    </div>
+    
+    <!-- Navigation -->
+    <div class="section">
+
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle"> 
+            Navigation
+        </h4>
+    
+        <hr class="line">
+
+        <!-- Buttons -->
+        <form>
+            <!-- Wallet -->
+            <button type="submit" formaction="{% url 'MapleCoin:wallet' ' ' %}" class="btn defaultButton">   
+                Wallet   
+            </button>
+
+            <!-- Block Chain -->
+            <button type="submit" formaction="{% url 'MapleCoin:BlockChain' %}" class="btn defaultButton"> 
+                Block Chain 
+            </button>
+
+            <!-- Transactions-->
+            <button type="submit" formaction="{% url 'MapleCoin:transactions' %}" class="btn defaultButton"> 
+                Transactions 
+            </button>
+            
+            <!-- Mining -->
+            <button type="submit" formaction="{% url 'MapleCoin:mining' %}"  class="btn defaultButton">   
+                Mining   
+            </button>
+
+        </form>
+
+    </div>
+    <!--- Navigation Buttons -->
+
+{% endblock %}

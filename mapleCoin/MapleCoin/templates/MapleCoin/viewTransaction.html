@@ -1,0 +1,113 @@
+<!-- Extending the layout page-->
+{% extends "MapleCoin/layout.html" %}
+
+<!-- The block part is where the new content will go-->
+{% block page %}
+
+    <!-- Title -->
+    <h2 class="display-4 text-blac title">
+        Transaction
+    </h2> 
+
+    <hr class="line">
+
+    <!-- Transaction Info -->
+    <div class="section">
+
+        <!-- Index -->
+        <h5>
+            Index :
+        </h5>
+        <p class="display-4 text-black info">
+                {{ transaction.id }}
+        </p>
+
+        <!-- Sender -->
+        <h5>
+            Sender :
+        </h5>
+        <p class="display-4 text-black info">
+            <a href="{% url 'MapleCoin:viewCryptoNode' transaction.sender %}">
+                <input type="text" class="rowEntry" value= "{{ transaction.sender }}" readonly>
+            </a> 
+        </p>
+
+        <!-- Reciever -->
+        <h5>
+            Reciever :
+        </h5>
+        <p class="display-4 text-black info">
+            <a href="{% url 'MapleCoin:viewCryptoNode' transaction.reciever %}">
+                <input type="text" class="rowEntry" value= "{{ transaction.reciever }}" readonly>
+            </a>  
+        </p>  
+
+
+        <!-- Amount -->
+        <h5>
+            Amount :
+        </h5> 
+        <p class="display-4 text-black info">
+            {{ transaction.amount }}
+        </p>
+
+        <!-- Time Of Transaction -->
+        <h5>
+            Time of Transaction :
+        </h5> 
+        <p class="display-4 text-black info">
+            {{ transaction.timeOfTransaction }}
+        </p>
+
+        <!-- Block -->
+        <h5>
+            Block Index :
+        </h5> 
+        <p class="display-4 text-black info">
+            {{ transaction.block }}
+        </p>
+
+
+        <!-- Signature -->
+        <h5>
+            Signature :
+        </h5> 
+        <p class="display-4 text-black info">
+            {{ transaction.signature }}
+        </p>
+
+        <!-- Public Key -->
+        <h5>
+            Public Key :
+        </h5> 
+        <p class="display-4 text-black info">
+            {{ publicKey }}
+        </p>
+
+    </div>
+    <!-- End Transaction info -->
+
+    
+    <!-- Transaction download -->
+    <div class="section">
+        
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle"> 
+            Downloads
+        </h4>
+    
+        <hr class="line">
+        
+        <!-- Download -->
+        <form class="section">
+            <p>
+                <button type="submit" formaction="{% url 'MapleCoin:downloadTransaction' transaction.id %}" class="btn defaultButton"> 
+                    Transaction
+                </button>  
+            </p>
+        </form>
+
+    </div>
+    <!--End Transaction Download -->
+
+{% endblock %}

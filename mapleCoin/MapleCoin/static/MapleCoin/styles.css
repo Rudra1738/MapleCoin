@@ -1,0 +1,353 @@
+/* CSS Styling */
+
+/* Nav Bar */
+.vertical-nav {
+    min-width: 17rem;
+    width: 17rem;
+    height: 100vh;
+    position: fixed;
+    background: -webkit-linear-gradient(to right, #b84632, #e7b309);
+    background: linear-gradient(to right, #b84632, #e7b309);
+    top: 0;
+    left: 0;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s;
+}
+  
+.page-content {
+    width: calc(100% - 17rem);
+    margin-left: 17rem;
+    transition: all 0.4s;
+}
+
+.nav-item {
+    background: -webkit-linear-gradient(to right, #b84632, #e7b309);
+    background: linear-gradient(to right, #b84632, #e7b309);
+    color: gray;
+}
+/* for toggle behavior */
+  
+#sidebar.active {
+    margin-left: -17rem;
+}
+  
+#content.active {
+    width: 100%;
+    margin: 0;
+}
+/* toggle behaviour end */
+/* Nav bar end */
+
+
+
+/* For tables */
+.my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    width: 100vw;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}
+
+td {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+
+.rowEntry {
+    text-overflow: ellipsis; 
+    border: none; 
+    background-color: inherit;
+    width: 100%;
+}
+
+#blockChain {
+    height: 55vh;
+    width: 100%;
+}
+
+#transaction {
+    height: 55vh;
+    width: 100%;
+}
+
+#transactionSmall {
+    height: 40vh;
+    width: 100%;
+}
+/* End Tables */
+
+
+
+/* General Stuff */
+p{
+    overflow-wrap: break-word;
+}
+.separator {
+    margin: 3rem 0;
+    border-bottom: 1px dashed black;
+}
+
+.text-gray {
+    color: #aaa;
+}
+
+.title {
+    font-weight: 550;
+}
+
+.subtitle {
+    font-weight: 450;
+    font-size:xx-large;
+}
+
+.defaultButton {
+    background-color: transparent;
+    border-color:#e7b309;
+    color: #b84632;
+    font-weight: 300;
+    display : inline-block;
+    vertical-align : middle;
+}
+
+.defaultButton:hover {
+    background-color: #b84632;
+    color: #e7b309;
+    border-color: #b84632;
+}
+
+#sidebarCollapse{
+    background-color: transparent; 
+    border: 1px solid #e7b309; 
+    color: #b84632; 
+    position: absolute; 
+    right: 5vh;
+}
+
+#sidebarCollapse:hover {
+    background-color: #b84632;
+    color: #e7b309;
+    border-color: #b84632;
+}
+
+.line {
+    margin-bottom: 30px;
+}
+
+.highlight {
+    color:#e7b309
+}
+
+.highlight:hover{
+    color: #b84632;
+}
+
+.topRight {
+    position: absolute;
+    right: 22vh;
+}
+
+.userInput {
+    font-size: large; 
+    font-weight: 400;
+    overflow-wrap: break-word;
+}
+
+.info{
+    font-size: large; 
+    font-weight: 400;
+    overflow-wrap: break-word;
+}
+
+a{
+    color: inherit;
+}
+
+a:hover{
+    color: black;
+}
+
+.transactionInfo{
+    text-overflow: ellipsis; 
+    background-color: inherit;
+    width: 100%;
+}
+
+.section {
+    margin-bottom: 70px;
+}
+
+.user {
+    color: #b84632;
+    font-size: 155%;
+}
+
+.mobile {
+    display: none;
+}
+
+.walletTitle {
+    font-size: 130%;
+}
+ol{
+    margin-right: 10%;
+}
+/*General stuff end*/
+
+@media only screen and (max-width: 769px) {
+
+    /*Setup*/
+    .mobile {
+        display: block;
+    }
+
+    .normal{
+        display: none;
+    }
+    /*End Setup*/
+
+    /* Nav bar stuff */
+    #sidebar {
+        margin-left: -100%;
+        width: 100%;
+    }
+    
+    #sidebar.active {
+        margin-left: 0;
+    }
+    
+    #content {
+        width: 100%;
+        margin: 0;
+    }
+    
+    #content.active {
+        margin-left: 100%;
+    }
+
+    #sidebarCollapse {
+        font-size: 40%;
+        position: absolute;
+        top: 3vh;
+    }
+    /*End navbar stuff*/ 
+
+    /* General Stuff */
+    .title{
+        font-size: 200%;
+    }
+
+    .subtitle{
+        font-size: 150%;
+    }  
+
+    .defaultButton {
+        padding: 0, 0;
+        font-size: 70%;
+    }
+
+    .userInput {
+        font-size: small;
+    }
+
+    .rowEntry {
+        font-size: small;
+    }
+
+    .info {
+        font-size: small;
+    }
+
+    p{
+        font-size: small;
+    }
+
+    li {
+        font-size: small;
+    }
+
+    .user {
+        font-size: small;
+    }
+
+    .transactionInfo{
+        font-size: small;
+    }
+
+    .nav-item{
+        font-size: medium;
+    }
+
+    .walletTitle {
+        font-size: medium;
+    }
+
+    /*End General Stuff*/
+} 
+
+@media only screen and (min-width: 770px) and (max-width: 1366px) {
+    /*setup*/
+    .mobile {
+        display: block;
+    }
+
+    .normal{
+        display: none;
+    }  
+    /*end setup*/
+
+    /*general stuff*/
+    .title{
+        font-size: 300%;
+    }
+
+    .subtitle{
+        font-size: 145%;
+    }  
+
+    .defaultButton {
+        padding: 0, 0;
+        font-size: 80%;
+    }
+
+    .userInput {
+        font-size: medium;
+    }
+
+    .rowEntry {
+        font-size: medium;
+    }
+
+    .info {
+        font-size: medium;
+    }
+
+    p{
+        font-size: medium;
+    }
+
+    li {
+        font-size: medium;
+    }
+
+    .user {
+        font-size: medium;
+    }
+
+    .transactionInfo{
+        font-size: medium;
+    }
+
+    .nav-item{
+        font-size: large;
+    }
+
+    .walletTitle {
+        font-size: large;
+    }
+    /*end general stuff*/
+}

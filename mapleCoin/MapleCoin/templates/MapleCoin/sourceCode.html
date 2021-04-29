@@ -1,0 +1,142 @@
+<!-- Extending the layout page-->
+{% extends "MapleCoin/layout.html" %}
+
+<!-- The block part is where the new content will go -->
+{% block page %}
+
+    <!-- Title -->
+    <h2 class="display-4 text-black title">
+        Source Code
+    </h2>
+
+    <hr class="line">
+
+    <div class="section">
+        <p>
+            This page is for aspiring developers wishing to explore the world of the Maple Coin network and take part in it. 
+        </p>
+    </div>
+
+    <!-- Info for getting started -->
+    <div class="section">
+
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle"> 
+            Get Started on a Local Django Server
+        </h4>
+    
+        <hr class="line">
+
+        <!-- How to get started -->
+        <p>
+           
+    
+            <!-- Instructions -->
+    
+            <ol style="position: relative; left: 3vh;">
+    
+                <li> 
+                    Have python3 and Django already installed on your device along with the libraries from 
+                    <span class="highlight">
+                        requirements.txt
+                    </span>
+                    of the Mining Software (This step is integral!)
+                </li>
+                <li>
+                    Running the server in a virtual environment is recommended to avoid issues and interference with other local projects.
+                </li>
+                <li>
+                    Through <span class="highlight">Command Prompt</span> (For Windows) or <span class="highlight">Terminal</span> (For macOS), 
+                    navigate to the project directory (Using "cd/path/to/files")
+                </li>
+                <li>
+                    Run <span class="highlight">"py manage.py makemigrations"</span> followed by <span class="highlight">"py manage.py migrate"</span> for Windows <br>
+                    Or <span class="highlight">"python3 manage.py makemigrations"</span> followed by <span class="highlight">"python3 manage.py migrate"</span> for macOS. <br>
+                    This is to make sure that your local SQL database is in sync with the network database (Only structure, not entries)
+                </li>
+                <li>
+                    <span class= "highlight">Static Files</span> and <span class= "highlight">Media Files</span> do not need to be collected on a local Django Server; it is done automatically.
+                </li>
+                <li>
+                    Go to <span class="highlight">
+                        settings.py
+                    </span>
+                    in the project directory and set <span class="highlight">
+                        "DEBUG = True"
+                    </span>
+                </li>
+                <li>
+                    Run the server by using the following command: <br>
+                    <span class="highlight">
+                        "py manage.py runserver"
+                    </span>
+                    for Windows <br>
+                    <span class="highlight">
+                        "python3 manage.py runserver"
+                    </span>
+                    for macOS.
+                </li>
+                <li>
+                    Visit the site on your local browser using the address: <span class="highlight">"http://127.0.0.1:8000"</span> <br>
+                    Set the Mining Software's global variable <span class="highlight"> "networkSite = 'http://127.0.0.1:8000'"</span> 
+                    to use the mining software with the local Maple Coin Network
+                </li>
+            </ol> 
+            
+            <!-- End Instructions -->
+        </p>
+
+    </div>
+    <!-- End info on getting started -->
+
+
+    
+
+    <!-- Source Code download -->
+    <div class="section">
+
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle"> 
+            Downloads
+        </h4>
+    
+        <hr class="line">
+        
+        <!-- Downloads -->
+        <form>
+            <p>
+                <button type="submit" formaction="{{ sourceCodeFile.sourceFile.url }}" class="btn defaultButton" style="padding-left: 1.48rem; padding-right: 1.48rem;"> 
+                    Source Code (.zip)
+                </button>  
+            </p>
+    
+            <p>
+                <button type="submit" formaction="https://github.com/Rudra1738/MapleCoin" class="btn defaultButton"> 
+                    Source Code (Github)
+                </button>
+            </p>
+            
+        </form>
+
+    </div>
+    <!-- End Source Code Download -->
+
+    <!-- Documentation -->
+    <div class="section">
+        
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle"> 
+            Documentation
+        </h4>
+        
+        <!-- Description-->
+        <hr class="line">
+    
+        <p class="info">
+            Coming Soon!
+        </p>
+
+    </div>
+    <!-- End Documentation-->
+
+{% endblock %}

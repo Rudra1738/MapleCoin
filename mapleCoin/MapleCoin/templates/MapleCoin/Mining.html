@@ -1,0 +1,161 @@
+<!-- Extending the layout page-->
+{% extends "MapleCoin/layout.html" %}
+
+<!-- The block part is where the new content will go -->
+{% block page %}
+
+    <!-- Title -->
+    <h2 class="display-4 text-black title">
+        Mining
+    </h2>
+
+    <hr class="line">
+
+    <!-- Small Description-->
+    <div class="section">
+
+        <p>
+            Maple Coin Mining Software allows you to mine blocks for the Maple Coin blockchain network. 
+            For your hard work, you will be rewarded with Maple Coins each time you successfully mine a block. 
+            Good luck!
+        </p>
+
+    </div>
+    
+    <div class="section">
+
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle"> 
+            Get Started
+        </h4>
+    
+        <hr class="line">
+
+        <!-- Mining Instructions-->
+        <p>
+            <!-- List to show steps-->
+            <ol style="position: relative; left: 3vh;">
+
+                <li> 
+    
+                    Install Python 3 (with tkinter) on your computer. 
+    
+                    <a href="https://phoenixnap.com/kb/how-to-install-python-3-windows" class="highlight" target="_blank">
+                        Click here for a tutorial on how to install Python.
+                    </a> 
+    
+                </li>
+
+                <li>
+    
+                    Go to the <span class="highlight">Downloads</span> section below and download the mining software.
+                </li>
+
+                <li>
+    
+                    Open up <span class="highlight">Command Prompt</span> (for Windows) or <span class="highlight">Terminal</span> (for macOS/Linux/UNIX based OS)
+    
+                </li>
+    
+                <li>
+    
+                    Go to the directory of the downloaded files by using 
+                    <span class="highlight">
+                        "cd path/to/files"
+                    </span>
+                    
+                </li>
+    
+                <li>
+                    Type in the following command 
+                    <span class="highlight">
+                        "py -m pip install -r requirements.txt"
+                    </span> 
+                    wait for the modules to get installed 
+                    (For macOS: 
+                    <span class="highlight">
+                        "pip3 install -r requirements.txt"
+                    </span>)
+    
+                </li>
+    
+                <li> 
+                    Finished, to run the mining software, type in the following command 
+                    <span class="highlight">
+                        "py miningSoftware.py"
+                    </span> (For macOS: 
+                    <span class="highlight">
+                        "python3 miningSoftware.py"
+                    </span>)
+                </li>
+    
+                <li>
+                    
+                    Log into your account or create it on 
+                    <a href="{% url 'MapleCoin:register' %}" class="highlight">
+                        https://www.maple-coin.com/register
+                    </a> 
+                    and start mining!
+    
+                </li>
+            </ol>
+        </p>
+
+    </div>
+     <!-- End Instructions for mining -->
+
+    <!-- Mining Software download -->
+    <div class="section">
+        
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle"> 
+            Downloads
+        </h4>
+
+        <hr class="line">
+
+        <!-- Downloads -->
+        <form>
+
+            <p>
+                <button type="submit" formaction="{{ miningSoftwareFileWindows.sourceFile.url }}" class="btn defaultButton"> 
+                    Mining Software (Windows, .zip)
+                </button>  
+            </p>
+
+            <p>
+                <button type="submit" formaction="{{ miningSoftwareFileMacOS.sourceFile.url }}" class="btn defaultButton" style="padding-left: 1.19rem; padding-right: 1.19rem;"> 
+                    Mining Software (macOS, .zip)
+                </button>  
+            </p>
+
+            <p>
+                <button type="submit" formaction="https://github.com/Rudra1738/MapleCoinMiningSoftware" class="btn defaultButton" style="padding-left: 2.4rem; padding-right: 2.4rem"> 
+                    Mining Software (Github)
+                </button>
+            </p>
+            
+        </form>
+
+    </div>
+    <!-- End Mining Software Download -->
+    
+    <!-- Documentation -->
+    <div class="section">
+
+        <!-- Subtitle -->
+        <h4 class="display-4 text-black subtitle"> 
+            Documentation
+        </h4>
+
+        <hr class="line">
+
+        <!-- Description -->
+        <p class="info">
+            Coming Soon!
+        </p>
+
+    </div>
+    <!-- End Documentation-->
+    
+{% endblock %}
