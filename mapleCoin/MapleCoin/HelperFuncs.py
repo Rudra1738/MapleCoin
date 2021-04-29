@@ -429,7 +429,7 @@ def addBlock(data):
         #Signature
         signature= signMessage(
             ("Miner Reward" + str(data["miner"]) + str(float(minerReward)) + str(time)),
-            getPrivateKey(CryptoNodes.get(username= "Coin Base"))
+            getPrivateKey(CryptoNodes.get(username= "CoinBase"))
         ), 
 
         block= data["index"]
