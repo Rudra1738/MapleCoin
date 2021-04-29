@@ -4,8 +4,8 @@ This is the source code of the Maple Coin Network for aspiring developers wishin
 
 Instructions on how to use it:
 
-Have python3 and Django already installed on your device along with the libraries from requirements.txt of the Mining Software (This step is integral!)
-Running the server in a virtual environment is recommended to avoid issues and interference with other local projects.
+1.Have python3 and Django already installed on your device along with the libraries from requirements.txt of the Mining Software (This step is integral!)
+2.Running the server in a virtual environment is recommended to avoid issues and interference with other local projects.
 Through Command Prompt (For Windows) or Terminal (For macOS), navigate to the project directory (Using "cd/path/to/files")
 Run "py manage.py makemigrations" followed by "py manage.py migrate" for Windows 
 Or "python3 manage.py makemigrations" followed by "python3 manage.py migrate" for macOS. 
