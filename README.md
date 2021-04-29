@@ -12,12 +12,12 @@ Instructions on how to use it:
 
 4) Run "py manage.py makemigrations" followed by "py manage.py migrate" for Windows Or "python3 manage.py makemigrations" followed by "python3 manage.py migrate" for macOS. This is to make sure that your local SQL database is in sync with the network database (Only structure, not entries)
 
-5)Static Files and Media Files do not need to be collected on a local Django Server; it is done automatically.
+5) Static Files and Media Files do not need to be collected on a local Django Server; it is done automatically.
 
-6)Go to settings.py in the project directory and set "DEBUG = True"
+6) Go to settings.py in the project directory and set "DEBUG = True"
 
-7)Run the server by using the following command: "py manage.py runserver" for Windows; "python3 manage.py runserver" for macOS.
+7) Run the server by using the following command: "py manage.py runserver" for Windows; "python3 manage.py runserver" for macOS.
 
-8)Set the Mining Software's global variable "networkSite = 'http://127.0.0.1:8000'" to use the mining software with the local Maple Coin Network
+8) Set the Mining Software's global variable "networkSite = 'http://127.0.0.1:8000'" to use the mining software with the local Maple Coin Network
 
-9)Visit the site on your local browser using the address: "http://127.0.0.1:8000"
+9) Visit the site on your local browser using the address: "http://127.0.0.1:8000"
